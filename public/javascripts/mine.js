@@ -1,7 +1,10 @@
+var FIELD_WIDTH = 40;
+var FIELD_HEIGHT = 40;
+
 $(function() {
   var renderField = function(field) {
-    for(var i = 0; i < 9; ++i) {
-      for(var j = 0; j < 9; ++j) {
+    for(var i = 0; i < FIELD_HEIGHT; ++i) {
+      for(var j = 0; j < FIELD_WIDTH; ++j) {
         var cell = $('#' + i + '_' + j);
         var cellStatus = field[i][j];
 

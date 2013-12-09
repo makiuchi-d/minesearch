@@ -40,8 +40,8 @@ console.log("Express server listening on port %d in %s mode", app.address().port
 
 var io = socketio.listen(app);
 
-var FIELD_WIDTH = 9;
-var FIELD_HEIGHT = 9;
+var FIELD_WIDTH = 40;
+var FIELD_HEIGHT = 40;
 
 var userCount = 0; 
 
@@ -91,7 +91,7 @@ var setRandomMineField = function(mineField, numberOfMines) {
 
 var users = {}
 var field = createField();
-var mineField = setRandomMineField(createField(), 10);
+var mineField = setRandomMineField(createField(), parseInt(FIELD_WIDTH*FIELD_HEIGHT/5));
 
 var countMines = function (field, x, y) {
   var n = 0;
