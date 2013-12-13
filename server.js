@@ -42,6 +42,7 @@ var io = socketio.listen(app);
 
 var FIELD_WIDTH = 40;
 var FIELD_HEIGHT = 40;
+var MINE_COUNT = parseInt(FIELD_WIDTH*FIELD_HEIGHT/5);
 
 var userCount = 0; 
 
@@ -91,7 +92,7 @@ var setRandomMineField = function(mineField, numberOfMines) {
 
 var users = {}
 var field = createField();
-var mineField = setRandomMineField(createField(), parseInt(FIELD_WIDTH*FIELD_HEIGHT/5));
+var mineField = setRandomMineField(createField(), MINE_COUNT);
 
 var countMines = function (field, x, y) {
   var n = 0;
@@ -152,7 +153,7 @@ io.sockets.on('connection', function(socket) {
   socket.emit('count push', userCount);
 
   socket.on('reset send', function() {
-    setRandomMineField(mineField, 10);
+    setRandomMineField(mineField, MINE_COUNT);
     initializeField(field);
     io.sockets.emit('field push', field);
     io.sockets.emit('msg push', '');
